@@ -14,14 +14,6 @@ class stock {
     String[] state = {"Select a state", "Gujarat", "Maharashtra", "Delhi", "Punjab"};
     JComboBox list_state = new JComboBox<>(state);
 
-//    String fname = t_fname.getText();
-//    String lname = t_lname.getText();
-//    String acc_no = t_acc_no.getText();
-//    String acc_type = "Savings";
-//    String mob = t_mob.getText();
-//    String city1 = (String) list_city.getSelectedItem();
-//    String state1 = (String) list_state.getSelectedItem();
-
     Client TempClient;
     ArrayList<Client> dataList;
 
@@ -155,9 +147,7 @@ class stock {
                     TempClient.state = (String) list_state.getSelectedItem();
                     TempClient.account_no = t_acc_no.getText();
                     TempClient.account_type = rb1.getText();
-
                     dataList.add(TempClient);
-
                     try{
                         FileManager.saveList(dataList);
                     }
@@ -385,79 +375,6 @@ class stock {
         f4.setVisible(true);
     }
 
-    /*public void frame5(){
-        JFrame f5 = new JFrame("Devil Broking");
-
-        // background image
-        //f5.setContentPane(new JLabel(new ImageIcon("Untitled-2.jpg")));
-
-        // labels
-        JLabel l1 = new JLabel("First Name : ");
-        JLabel l2 = new JLabel("Last name : ");
-        JLabel l3 = new JLabel("Account Number: ");
-        JLabel l4 = new JLabel("Account Type: ");
-        JLabel l5 = new JLabel("Mobile Number: ");
-        JLabel l6 = new JLabel("City : ");
-        JLabel l7 = new JLabel("State: ");
-
-        l1.setBounds(500,50,75,50);
-        l2.setBounds(500,100,75,50);
-        l3.setBounds(500,150,110,50);
-        l4.setBounds(500,200,100,50);
-        l5.setBounds(500,250,75,50);
-        l6.setBounds(500,300,75,50);
-        l7.setBounds(500,350,75,50);
-
-        f5.add(l1);
-        f5.add(l2);
-        f5.add(l3);
-        f5.add(l4);
-        f5.add(l5);
-        f5.add(l6);
-        f5.add(l7);
-
-        // Text Field
-        JTextField tf1 = new JTextField(t_fname.getText());
-        JTextField tf2 = new JTextField(t_lname.getText());
-        JTextField tf3 = new JTextField(t_acc_no.getText());
-        JTextField tf4 = new JTextField(t_mob.getText());
-        JTextField tf5 = new JTextField((String) list_city.getSelectedItem());
-        JTextField tf6 = new JTextField((String) list_state.getSelectedItem());
-
-        tf1.setBounds(625,65,100,25);
-        tf2.setBounds(625,115,100,25);
-        tf3.setBounds(625,165,100,25);
-        tf4.setBounds(625,265,100,25);
-        tf5.setBounds(625,315,100,25);
-        tf6.setBounds(625,365,100,25);
-
-        tf1.setVisible(true);
-        tf2.setVisible(true);
-        tf3.setVisible(true);
-        tf4.setVisible(true);
-        tf5.setVisible(true);
-        tf6.setVisible(true);
-
-        f5.add(tf1);
-        f5.add(tf2);
-        f5.add(tf3);
-        f5.add(tf4);
-        f5.add(tf5);
-        f5.add(tf6);
-
-        // button
-        *//*JButton b = new JButton("Create");
-        b.setBounds(500, 350, 170, 30);
-        b.setVisible(true);
-        f5.add(b);
-*//*
-        // frame setting
-        // f5.setSize(1200, 600);
-        f5.setBounds(180, 100, 1200, 600);
-        f5.setLayout(null);
-        f5.setVisible(true);
-    }
-*/
     public void frame5(){
         JFrame f5 = new JFrame("Devil Broking");
 
@@ -580,7 +497,6 @@ class FileManager {
         ObjectInputStream ois = new ObjectInputStream(new FileInputStream("Data.txt"));
         DATA = (ArrayList<Client>) ois.readObject();
         ois.close();
-
         return DATA;
     }
 
@@ -589,5 +505,4 @@ class FileManager {
         oos.writeObject(DATA);
         oos.close();
     }
-
 }
