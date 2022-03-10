@@ -154,7 +154,7 @@ class stock {
                     TempClient.city = (String) list_city.getSelectedItem();
                     TempClient.state = (String) list_state.getSelectedItem();
                     TempClient.account_no = t_acc_no.getText();
-//                    TempClient.account_type = .getText();
+                    TempClient.account_type = rb1.getText();
 
                     dataList.add(TempClient);
 
@@ -438,14 +438,12 @@ class stock {
         tf5.setVisible(true);
         tf6.setVisible(true);
 
-
         f5.add(tf1);
         f5.add(tf2);
         f5.add(tf3);
         f5.add(tf4);
         f5.add(tf5);
         f5.add(tf6);
-
 
         // button
         *//*JButton b = new JButton("Create");
@@ -461,13 +459,74 @@ class stock {
     }
 */
     public void frame5(){
-        System.out.println(TempClient.first_name);
-        System.out.println(TempClient.last_name);
-        System.out.println(TempClient.phone_no);
-        System.out.println(TempClient.city);
-        System.out.println(TempClient.state);
-        System.out.println(TempClient.account_no);
-//        System.out.println(TempClient.account_no);
+        JFrame f5 = new JFrame("Devil Broking");
+
+        //background image
+        f5.setContentPane(new JLabel(new ImageIcon("bg2.jpg")));
+
+        JLabel l1 = new JLabel("First Name : ");
+        JLabel l2 = new JLabel("Last name : ");
+        JLabel l3 = new JLabel("Account Number: ");
+        JLabel l4 = new JLabel("Account Type: ");
+        JLabel l5 = new JLabel("Mobile Number: ");
+        JLabel l6 = new JLabel("City : ");
+        JLabel l7 = new JLabel("State: ");
+
+        l1.setBounds(500,50,75,50);
+        l2.setBounds(500,100,75,50);
+        l3.setBounds(500,150,110,50);
+        l4.setBounds(500,200,100,50);
+        l5.setBounds(500,250,75,50);
+        l6.setBounds(500,300,75,50);
+        l7.setBounds(500,350,75,50);
+
+        f5.add(l1);
+        f5.add(l2);
+        f5.add(l3);
+        f5.add(l4);
+        f5.add(l5);
+        f5.add(l6);
+        f5.add(l7);
+
+        // Text Field
+        JTextField tf1 = new JTextField(TempClient.first_name);
+        JTextField tf2 = new JTextField(TempClient.last_name);
+        JTextField tf3 = new JTextField(TempClient.account_no);
+        JTextField tf4 = new JTextField(TempClient.phone_no);
+        JTextField tf5 = new JTextField(TempClient.city);
+        JTextField tf6 = new JTextField(TempClient.state);
+        JTextField tf7 = new JTextField(TempClient.account_type);
+
+
+        tf1.setBounds(625,65,100,25);
+        tf2.setBounds(625,115,100,25);
+        tf3.setBounds(625,165,100,25);
+        tf4.setBounds(625,265,100,25);
+        tf5.setBounds(625,315,100,25);
+        tf6.setBounds(625,365,100,25);
+        tf7.setBounds(625,215,100,25);
+
+
+        tf1.setVisible(true);
+        tf2.setVisible(true);
+        tf3.setVisible(true);
+        tf4.setVisible(true);
+        tf5.setVisible(true);
+        tf6.setVisible(true);
+
+        f5.add(tf1);
+        f5.add(tf2);
+        f5.add(tf3);
+        f5.add(tf4);
+        f5.add(tf5);
+        f5.add(tf6);
+        f5.add(tf7);
+
+        // frame setting
+        // f5.setSize(1200, 600);
+        f5.setBounds(180, 100, 1200, 600);
+        f5.setLayout(null);
+        f5.setVisible(true);
     }
 }
 
@@ -483,19 +542,15 @@ public class devil_broking {
 
 class Client implements Serializable {
 
-//    String email_address;
-//    String passward;
+
     String first_name;
     String last_name;
-//    String age;
     String phone_no;
-//    String gender;
-//    String address;
     String city;
     String state;
     String account_no;
     String account_type;
-//    String pan_no;
+
 
 }
 
