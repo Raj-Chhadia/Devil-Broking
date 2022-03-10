@@ -4,7 +4,6 @@ import java.util.*;
 import javax.swing.*;
 import java.awt.event.*;
 
-
 class stock {
     //global declaration for details
     JTextField t_fname, t_lname, t_acc_no, t_mob;
@@ -329,6 +328,7 @@ class stock {
                 }
                 tf_price.setText("");
                 tf_qty.setText("");
+                tf_balance.setText("");
             }
         });
         //sell
