@@ -6,9 +6,9 @@ import java.awt.event.*;
 
 class stock {
     //global declaration for details
-    JTextField t_fname, t_lname, t_acc_no, t_mob;
+    JTextField t_fname, t_lname, t_acc_no, t_mob,t_password;
     JRadioButton rb1, rb2;
-    String[] city = {"Select a city", "Rajkot", "Jamnagar", "Ahmedabad", "Surat"};
+    String[] city = {"Select a city", "Rajkot", "Jamnagar", "Ahmedabad", "Surat","Mumbai","Pune"};
     JComboBox list_city = new JComboBox<>(city);
     String[] state = {"Select a state", "Gujarat", "Maharashtra", "Delhi", "Punjab"};
     JComboBox list_state = new JComboBox<>(state);
@@ -19,7 +19,7 @@ class stock {
     stock(ArrayList<Client> dataList){
         this.dataList = dataList;
         TempClient = new Client();
-        // TempClient = new Client("undefined","undefined");
+        //TempClient = new Client("undefined","undefined");
     }
 
     public void frame1() {
@@ -55,10 +55,16 @@ class stock {
                 if (tf_id.getText().hashCode() == 0 || pf_pass.getText().hashCode() == 0) {
                     System.out.println("Field can not be Empty");
                     JOptionPane.showMessageDialog(null, "Fields are empty!");
-                } else if (tf_id.getText().equals("raj") && pf_pass.getText().equals("123")) {
+                } else if (Objects.equals(tf_id.getText(), TempClient.last_name) && Objects.equals(pf_pass.getText(), TempClient.password)) {
                     f1.setVisible(false);
                     frame3();
-                } else {
+                }
+
+                /*else if (tf_id.getText().equals("raj") && pf_pass.getText().equals("123")) {
+                    f1.setVisible(false);
+                    frame3();*/
+                //}
+                else {
                     JOptionPane.showMessageDialog(null, "Invalid Credentials!");
                 }
             }
@@ -87,21 +93,23 @@ class stock {
 
     public void frame2() {
         JFrame f2 = new JFrame("Devil Broking");
-        JLabel l_fname, l_lname, l_acc_no, l_mob, l_city, l_state, l_acc_type;
+        JLabel l_fname, l_lname, l_acc_no, l_mob, l_city, l_state, l_acc_type,l_password;
         JButton b_next;
 
         //background
         f2.setContentPane(new JLabel(new ImageIcon("bg2.jpg")));
 
         //labels
-        l_fname = new JLabel("First Name : ");
+        l_fname = new JLabel("Name : ");
         l_fname.setBounds(500, 50, 75, 50);
-        l_lname = new JLabel("Last name : ");
+        l_lname = new JLabel("Username : ");
         l_lname.setBounds(500, 100, 75, 50);
+        l_password = new JLabel("Password : ");
+        l_password.setBounds(500,150,75,50);
         l_acc_no = new JLabel("Account number : ");
-        l_acc_no.setBounds(500, 150, 110, 50);
+        l_acc_no.setBounds(500, 200, 110, 50);
         l_acc_type = new JLabel("Account Type : ");
-        l_acc_type.setBounds(500, 200, 100, 50);
+        l_acc_type.setBounds(500, 250, 100, 50);
         l_mob = new JLabel("Mobile Number : ");
         l_mob.setBounds(500, 300, 100, 50);
         l_city = new JLabel("City : ");
@@ -114,16 +122,18 @@ class stock {
         t_fname.setBounds(625, 65, 100, 25);
         t_lname = new JTextField("");
         t_lname.setBounds(625, 115, 100, 25);
+        t_password = new JTextField("");
+        t_password.setBounds(625, 165, 100, 25);
         t_acc_no = new JTextField("");
-        t_acc_no.setBounds(625, 165, 100, 25);
+        t_acc_no.setBounds(625, 215, 100, 25);
         t_mob = new JTextField("");
         t_mob.setBounds(625, 315, 100, 25);
 
         //radio-button
         rb1 = new JRadioButton("Savings");
         rb2 = new JRadioButton("Current");
-        rb1.setBounds(500, 265, 100, 30);
-        rb2.setBounds(625, 265, 100, 30);
+        rb1.setBounds(600, 265, 100, 30);
+        rb2.setBounds(725, 265, 100, 30);
 
         ButtonGroup bg = new ButtonGroup();
         bg.add(rb1);
@@ -138,15 +148,22 @@ class stock {
                     System.out.println("Field can not be Empty");
                     JOptionPane.showMessageDialog(null, "Fields are empty!");
                 } else {
-
                     TempClient.first_name = t_fname.getText();
                     TempClient.last_name = t_lname.getText();
+                    TempClient.password = t_password.getText();
                     TempClient.phone_no = t_mob.getText();
                     TempClient.city = (String) list_city.getSelectedItem();
                     TempClient.state = (String) list_state.getSelectedItem();
                     TempClient.account_no = t_acc_no.getText();
-                    TempClient.account_type = rb1.getText();
+                    if(rb1.isSelected()){
+                    TempClient.account_type = "Savings";
+                    }
+                    else {
+                        TempClient.account_type = "Current";
+                    }
+
                     dataList.add(TempClient);
+
                     try{
                         FileManager.saveList(dataList);
                     }
@@ -155,7 +172,7 @@ class stock {
                     }
 
                     f2.setVisible(false);
-                    frame3();
+                    frame1();
                 }
             }
         });
@@ -183,6 +200,7 @@ class stock {
         f2.setBounds(180, 25, 1200, 800);
         f2.add(l_fname);
         f2.add(l_lname);
+        f2.add(l_password);
         f2.add(l_acc_no);
         f2.add(l_acc_type);
         f2.add(l_city);
@@ -190,6 +208,7 @@ class stock {
         f2.add(l_mob);
         f2.add(t_fname);
         f2.add(t_lname);
+        f2.add(t_password);
         f2.add(t_acc_no);
         f2.add(t_mob);
         f2.add(rb1);
@@ -381,8 +400,9 @@ class stock {
         //background image
         f5.setContentPane(new JLabel(new ImageIcon("bg2.jpg")));
 
-        JLabel l1 = new JLabel("First Name : ");
-        JLabel l2 = new JLabel("Last name : ");
+        JLabel l1 = new JLabel("Name : ");
+        JLabel l2 = new JLabel("Username : ");
+        JLabel l8 = new JLabel("Password : ");
         JLabel l3 = new JLabel("Account Number: ");
         JLabel l4 = new JLabel("Account Type: ");
         JLabel l5 = new JLabel("Mobile Number: ");
@@ -391,14 +411,16 @@ class stock {
 
         l1.setBounds(500,50,75,50);
         l2.setBounds(500,100,75,50);
-        l3.setBounds(500,150,110,50);
-        l4.setBounds(500,200,100,50);
-        l5.setBounds(500,250,75,50);
-        l6.setBounds(500,300,75,50);
-        l7.setBounds(500,350,75,50);
+        l8.setBounds(500,150,75,50);
+        l3.setBounds(500,200,110,50);
+        l4.setBounds(500,250,100,50);
+        l5.setBounds(500,300,75,50);
+        l6.setBounds(500,350,75,50);
+        l7.setBounds(500,400,75,50);
 
         f5.add(l1);
         f5.add(l2);
+        f5.add(l8);
         f5.add(l3);
         f5.add(l4);
         f5.add(l5);
@@ -408,36 +430,57 @@ class stock {
         // Text Field
         JTextField tf1 = new JTextField(TempClient.first_name);
         JTextField tf2 = new JTextField(TempClient.last_name);
+        JTextField tf8 = new JTextField(TempClient.password);
         JTextField tf3 = new JTextField(TempClient.account_no);
         JTextField tf4 = new JTextField(TempClient.phone_no);
         JTextField tf5 = new JTextField(TempClient.city);
         JTextField tf6 = new JTextField(TempClient.state);
         JTextField tf7 = new JTextField(TempClient.account_type);
 
+        JButton close = new JButton("close");
+        close.setBounds(650,500,100,25);
+        close.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                    f5.setVisible(false);
+            }
+        });
 
         tf1.setBounds(625,65,100,25);
         tf2.setBounds(625,115,100,25);
-        tf3.setBounds(625,165,100,25);
-        tf4.setBounds(625,265,100,25);
-        tf5.setBounds(625,315,100,25);
-        tf6.setBounds(625,365,100,25);
-        tf7.setBounds(625,215,100,25);
-
+        tf8.setBounds(625,165,100,25);
+        tf3.setBounds(625,215,100,25);
+        tf4.setBounds(625,315,100,25);
+        tf5.setBounds(625,365,100,25);
+        tf6.setBounds(625,415,100,25);
+        tf7.setBounds(625,265,100,25);
 
         tf1.setVisible(true);
         tf2.setVisible(true);
+        tf8.setVisible(true);
         tf3.setVisible(true);
         tf4.setVisible(true);
         tf5.setVisible(true);
         tf6.setVisible(true);
+        tf7.setVisible(true);
+
+        tf1.setEditable(false);
+        tf2.setEditable(false);
+        tf8.setEditable(false);
+        tf3.setEditable(false);
+        tf4.setEditable(false);
+        tf5.setEditable(false);
+        tf6.setEditable(false);
+        tf7.setEditable(false);
 
         f5.add(tf1);
         f5.add(tf2);
+        f5.add(tf8);
         f5.add(tf3);
         f5.add(tf4);
         f5.add(tf5);
         f5.add(tf6);
         f5.add(tf7);
+        f5.add(close);
 
         // frame setting
         // f5.setSize(1200, 600);
@@ -462,12 +505,12 @@ class Client implements Serializable {
 
     String first_name;
     String last_name;
+    String password;
     String phone_no;
     String city;
     String state;
     String account_no;
     String account_type;
-
 
 }
 
