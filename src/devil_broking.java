@@ -1,4 +1,5 @@
 
+import java.awt.*;
 import java.io.*;
 import java.util.*;
 import javax.swing.*;
@@ -30,6 +31,7 @@ class stock {
         JLabel l_id, l_pass;
         JButton b_login = new JButton("Login");
         JButton b_signup = new JButton("SignUp");
+        JLabel welcome = new JLabel("Welcome to Devil Broking");
 
         //background
         f1.setContentPane(new JLabel(new ImageIcon("bg2.jpg")));
@@ -39,6 +41,11 @@ class stock {
         l_pass = new JLabel("Password: ");
         l_id.setBounds(500, 300, 100, 50);
         l_pass.setBounds(500, 350, 100, 50);
+        welcome.setBounds(525,100,250,100);
+
+        welcome.setFont(new Font("Baskerville Old Face", Font.BOLD, 20));
+        l_id.setFont(new Font("Baskerville Old Face", Font.BOLD, 20));
+        l_pass.setFont(new Font("Baskerville Old Face", Font.BOLD, 20));
 
         //text field
         tf_id = new JTextField("");
@@ -81,6 +88,7 @@ class stock {
         });
 
         //adding elements
+        f1.add(welcome);
         f1.add(l_id);
         f1.add(l_pass);
         f1.add(tf_id);
@@ -96,26 +104,38 @@ class stock {
         JLabel l_fname, l_lname, l_acc_no, l_mob, l_city, l_state, l_acc_type,l_password;
         JButton b_next;
 
+        int acc = (int) (Math.random()*5000);
+
         //background
         f2.setContentPane(new JLabel(new ImageIcon("bg2.jpg")));
 
         //labels
         l_fname = new JLabel("Name : ");
-        l_fname.setBounds(500, 50, 75, 50);
+        l_fname.setBounds(450, 50, 125, 50);
         l_lname = new JLabel("Username : ");
-        l_lname.setBounds(500, 100, 75, 50);
+        l_lname.setBounds(450, 100, 125, 50);
         l_password = new JLabel("Password : ");
-        l_password.setBounds(500,150,75,50);
+        l_password.setBounds(450,150,125,50);
         l_acc_no = new JLabel("Account number : ");
-        l_acc_no.setBounds(500, 200, 110, 50);
+        l_acc_no.setBounds(450, 200, 160, 50);
         l_acc_type = new JLabel("Account Type : ");
-        l_acc_type.setBounds(500, 250, 100, 50);
+        l_acc_type.setBounds(450, 250, 150, 50);
         l_mob = new JLabel("Mobile Number : ");
-        l_mob.setBounds(500, 300, 100, 50);
+        l_mob.setBounds(450, 300, 160, 50);
         l_city = new JLabel("City : ");
-        l_city.setBounds(500, 350, 75, 50);
+        l_city.setBounds(450, 350, 125, 50);
         l_state = new JLabel("State : ");
-        l_state.setBounds(500, 450, 75, 50);
+        l_state.setBounds(450, 450, 125, 50);
+
+        l_fname.setFont(new Font("Baskerville Old Face", Font.BOLD, 20));
+        l_lname.setFont(new Font("Baskerville Old Face", Font.BOLD, 20));
+        l_password.setFont(new Font("Baskerville Old Face", Font.BOLD, 20));
+        l_acc_no.setFont(new Font("Baskerville Old Face", Font.BOLD, 20));
+        l_acc_type.setFont(new Font("Baskerville Old Face", Font.BOLD, 20));
+        l_mob.setFont(new Font("Baskerville Old Face", Font.BOLD, 20));
+        l_city.setFont(new Font("Baskerville Old Face", Font.BOLD, 20));
+        l_state.setFont(new Font("Baskerville Old Face", Font.BOLD, 20));
+
 
         //text-field
         t_fname = new JTextField("");
@@ -124,8 +144,10 @@ class stock {
         t_lname.setBounds(625, 115, 100, 25);
         t_password = new JTextField("");
         t_password.setBounds(625, 165, 100, 25);
-        t_acc_no = new JTextField("");
+        t_acc_no = new JTextField();
+        t_acc_no.setText(String.valueOf(acc));
         t_acc_no.setBounds(625, 215, 100, 25);
+        t_acc_no.setEditable(false);
         t_mob = new JTextField("");
         t_mob.setBounds(625, 315, 100, 25);
 
@@ -233,11 +255,16 @@ class stock {
 
         //labels
         l_sensex = new JLabel("SENSEX");
-        l_sensex.setBounds(100, 25, 50, 50);
+        l_sensex.setBounds(100, 25, 125, 50);
         l_nifty = new JLabel("NIFTY 50");
-        l_nifty.setBounds(600, 25, 75, 50);
+        l_nifty.setBounds(600, 25, 125, 50);
         l_watchlist = new JLabel("Dow Jones:");
-        l_watchlist.setBounds(600, 325, 70, 50);
+        l_watchlist.setBounds(600, 325, 120, 50);
+
+        l_nifty.setFont(new Font("Baskerville Old Face", Font.BOLD, 20));
+        l_sensex.setFont(new Font("Baskerville Old Face", Font.BOLD, 20));
+        l_watchlist.setFont(new Font("Baskerville Old Face", Font.BOLD, 20));
+
 
         //image
         JLabel i1 = new JLabel(new ImageIcon("graph1.png"));
@@ -314,17 +341,22 @@ class stock {
 
         //LABELS
         l_name = new JLabel("Name of stock: ");
-        l_name.setBounds(400, 100, 150, 40);
+        l_name.setBounds(350, 100, 150, 40);
         l_currentbal = new JLabel("Current Balance: ");
-        l_currentbal.setBounds(400, 250, 150, 40);
+        l_currentbal.setBounds(350, 250, 150, 40);
         l_price = new JLabel("Price : ");
-        l_price.setBounds(400, 150, 150, 40);
+        l_price.setBounds(350, 150, 150, 40);
         l_qty = new JLabel("Quantity : ");
-        l_qty.setBounds(400, 200, 150, 40);
+        l_qty.setBounds(350, 200, 150, 40);
+
+        l_name.setFont(new Font("Baskerville Old Face", Font.BOLD, 20));
+        l_currentbal.setFont(new Font("Baskerville Old Face", Font.BOLD, 20));
+        l_price.setFont(new Font("Baskerville Old Face", Font.BOLD, 20));
+        l_qty.setFont(new Font("Baskerville Old Face", Font.BOLD, 20));
 
         //Buttons
         //buy
-        b_buy.setBounds(535, 410, 100, 50);
+        b_buy.setBounds(485, 410, 100, 50);
         b_buy.setVisible(true);
         b_buy.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -351,7 +383,7 @@ class stock {
             }
         });
         //sell
-        b_sell.setBounds(645, 410, 100, 50);
+        b_sell.setBounds(595, 410, 100, 50);
         b_sell.setVisible(true);
         b_sell.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -409,14 +441,22 @@ class stock {
         JLabel l6 = new JLabel("City : ");
         JLabel l7 = new JLabel("State: ");
 
-        l1.setBounds(500,50,75,50);
-        l2.setBounds(500,100,75,50);
-        l8.setBounds(500,150,75,50);
-        l3.setBounds(500,200,110,50);
-        l4.setBounds(500,250,100,50);
-        l5.setBounds(500,300,75,50);
-        l6.setBounds(500,350,75,50);
-        l7.setBounds(500,400,75,50);
+        l1.setBounds(450,50,125,50);
+        l2.setBounds(450,100,125,50);
+        l8.setBounds(450,150,125,50);
+        l3.setBounds(450,200,160,50);
+        l4.setBounds(450,250,150,50);
+        l5.setBounds(450,300,150,50);
+        l6.setBounds(450,350,125,50);
+        l7.setBounds(450,400,125,50);
+
+        l1.setFont(new Font("Baskerville Old Face", Font.BOLD, 20));
+        l2.setFont(new Font("Baskerville Old Face", Font.BOLD, 20));
+        l3.setFont(new Font("Baskerville Old Face", Font.BOLD, 20));
+        l4.setFont(new Font("Baskerville Old Face", Font.BOLD, 20));
+        l5.setFont(new Font("Baskerville Old Face", Font.BOLD, 20));
+        l6.setFont(new Font("Baskerville Old Face", Font.BOLD, 20));
+        l7.setFont(new Font("Baskerville Old Face", Font.BOLD, 20));
 
         f5.add(l1);
         f5.add(l2);
@@ -438,7 +478,7 @@ class stock {
         JTextField tf7 = new JTextField(TempClient.account_type);
 
         JButton close = new JButton("close");
-        close.setBounds(650,500,100,25);
+        close.setBounds(600,500,100,25);
         close.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                     f5.setVisible(false);

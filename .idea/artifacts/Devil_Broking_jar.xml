@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Devil Broking:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Devil_Broking_jar</output-path>
+    <root id="archive" name="Devil Broking.jar">
+      <element id="module-output" name="Devil Broking" />
+      <element id="library" level="project" name="mysql-connector-java-5.1.38" />
+    </root>
+  </artifact>
+</component>
